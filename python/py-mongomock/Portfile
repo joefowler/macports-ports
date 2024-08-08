@@ -1,0 +1,31 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-mongomock
+version             4.1.2
+revision            0
+
+# categories-append
+license             BSD
+maintainers         nomaintainer
+
+description         Fake pymongo stub for testing simple MongoDB-dependent code
+long_description    {*}${description}
+
+homepage            https://pypi.org/project/mongomock
+
+checksums           rmd160  358d82fa422b32595d06e7c581404f0b17763e9c \
+                    sha256  f06cd62afb8ae3ef63ba31349abd220a657ef0dd4f0243a29587c5213f931b7d \
+                    size    133271
+
+python.versions     38 39 310 311 312
+
+if {${name} ne ${subport}} {
+
+    depends_lib-append \
+                    port:py${python.version}-packaging \
+                    port:py${python.version}-pbr \
+                    port:py${python.version}-sentinels
+}
