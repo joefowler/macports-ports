@@ -1,0 +1,30 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-pydash
+version             8.0.3
+revision            0
+
+license             MIT
+maintainers         nomaintainer
+
+description         The kitchen sink of Python utility libraries for doing \
+                    "stuff" in a functional way. Based on the Lo-Dash \
+                    Javascript library.
+long_description    {*}${description}
+
+homepage            https://pydash.readthedocs.io/en/latest/
+
+checksums           rmd160  3054b24cb1aad9e0c099f4cb3e1f6174b26a1e56 \
+                    sha256  1b27cd3da05b72f0e5ff786c523afd82af796936462e631ffd1b228d91f8b9aa \
+                    size    188737
+
+python.versions     38 39 310 311 312
+
+if {${name} ne ${subport}} {
+
+    depends_lib-append \
+                    port:py${python.version}-typing_extensions
+}
