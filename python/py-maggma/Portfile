@@ -1,0 +1,55 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+name                py-maggma
+version             0.69.1
+revision            0
+
+categories-append   science
+license             unknown  # upt failed to detect license
+maintainers         nomaintainer
+
+description         Framework to develop datapipelines from files on disk to \
+                    full dissemenation API
+long_description    Maggma is a framework to build scientific data processing pipelines \
+                    from data stored in a variety of formats -- databases, Azure Blobs, \
+                    files on disk, etc., all the way to a REST API.
+
+homepage            https://materialsproject.github.io/maggma/
+
+checksums           rmd160  3a7cdd73f204082e844d2c56364394d2248574f6 \
+                    sha256  f225d835e3311be98b4b899ae11d05d7fd84d4441994b6276c276b051a9b9ce8 \
+                    size    226767
+
+python.versions     39 310 311 312
+
+
+if {${name} ne ${subport}} {
+    depends_build-append \
+        port:py${python.version}-setuptools_scm
+
+    depends_lib-append \
+                    port:py${python.version}-aioitertools \
+                    port:py${python.version}-boto3 \
+                    port:py${python.version}-dateutil \
+                    port:py${python.version}-dnspython \
+                    port:py${python.version}-jsonlines \
+                    port:py${python.version}-jsonschema \
+                    port:py${python.version}-mongomock \
+                    port:py${python.version}-monty \
+                    port:py${python.version}-msgpack \
+                    port:py${python.version}-numpy \
+                    port:py${python.version}-orjson \
+                    port:py${python.version}-pandas \
+                    port:py${python.version}-pydantic \
+                    port:py${python.version}-pydantic_settings \
+                    port:py${python.version}-pydash \
+                    port:py${python.version}-pymongo \
+                    port:py${python.version}-ruamel-yaml \
+                    port:py${python.version}-setuptools \
+                    port:py${python.version}-sshtunnel \
+                    port:py${python.version}-tqdm \
+                    port:py${python.version}-zmq
+}
