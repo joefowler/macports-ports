@@ -1,0 +1,41 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           python 1.0
+
+## Portfile generated/maintained using the Universal Packaging Tool (upt)
+## Please check out the commented statements and refer to the guide for more information:
+## https://guide.macports.org/#reference.keywords
+name                py-emmet-core
+version             0.84.1
+revision            0
+
+categories-append   science
+license             BSD
+maintainers         nomaintainer
+
+description         Core Emmet Library
+long_description    The Materials API Toolkit for the Materials Project. Emmet defines the core \
+                    models, data pipelines, the API server, and the convenience CLI.
+
+homepage            https://github.com/materialsproject/emmet
+
+checksums           rmd160  9fc2c8239360308dde43e398679ee07731b1d774 \
+                    sha256  209f626807a19f4c684b4e09abf67f27634b59beaac8eed9ba2d01d2ddeccf93 \
+                    size    199098
+
+python.versions     38 39 310 311 312
+
+if {${name} ne ${subport}} {
+    depends_build-append \
+        port:py${python.version}-setuptools_scm
+
+    depends_lib-append \
+                    port:py${python.version}-monty \
+                    port:py${python.version}-numpy \
+                    port:py${python.version}-pybtex \
+                    port:py${python.version}-pydantic \
+                    port:py${python.version}-pydantic_settings \
+                    port:py${python.version}-pymatgen \
+                    port:py${python.version}-typing_extensions
+}
